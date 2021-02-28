@@ -3,8 +3,10 @@ export interface Game {
   createdBy: string
   name: string
   icon: string
-  background: Background
+  backgroundColor: string
 }
+
+export type PrimaryGame = Omit<Game, "id">
 
 export interface Background {
   pattern: "DEFAULT"

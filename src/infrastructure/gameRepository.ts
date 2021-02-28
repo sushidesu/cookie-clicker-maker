@@ -1,5 +1,5 @@
 import firebase from "firebase"
-import { Game } from "domain/entity"
+import { Game, PrimaryGame } from "domain/entity"
 import {
   IGameRepository,
   PaginatedGames,
@@ -7,14 +7,21 @@ import {
 } from "domain/repository"
 
 export class GameRepository implements IGameRepository {
-  private databaseInstance: firebase.database.Database
+  private GAME_PATH = "game"
+  private databaseReference: firebase.database.Reference
 
   constructor(databaseInstance: firebase.database.Database) {
-    this.databaseInstance = databaseInstance
+    this.databaseReference = databaseInstance.ref(this.GAME_PATH)
   }
 
-  addGame() {
-    // todo
+  addGame(game: PrimaryGame) {
+    console.log(game)
+    const key = this.databaseReference.push().key as string
+    const newGame: Game = {
+      ...game,
+      id: key,
+    }
+    this.databaseReference.child(key).set(newGame)
   }
 
   removeGame() {
@@ -22,7 +29,7 @@ export class GameRepository implements IGameRepository {
   }
 
   async getGames({ index, limit }: GetGamesProps) {
-    const gameSnapshot = await this.databaseInstance.ref("/game").once("value")
+    const gameSnapshot = await this.databaseReference.once("value")
     const games = Object.values(gameSnapshot.val()) as Game[]
     const result: PaginatedGames = {
       nextIndex: null,

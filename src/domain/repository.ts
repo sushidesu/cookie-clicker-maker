@@ -1,7 +1,7 @@
 import { Game } from "domain/entity"
 
 export interface IGameRepository {
-  addGame: (game: Game) => void
+  addGame: (game: Omit<Game, "id">) => void
   removeGame: (gameId: string) => void
   getGames: (props: GetGamesProps) => Promise<PaginatedGames>
 }
