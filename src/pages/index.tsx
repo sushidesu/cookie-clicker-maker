@@ -24,18 +24,23 @@ export default function Home({
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Cookie Clicker Maker</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>Cookie Clicker Maker</h1>
-        <button className="bg-indigo-700 font-semibold text-white py-2 px-4 rounded">
-          Start
-        </button>
-        <div>
-          {games.map((game, index) => (
-            <p key={index}>{game.name}</p>
-          ))}
+        <div className="flex flex-col items-center justify-center m-8">
+          <h1 className="text-3xl font-bold">Cookie Clicker Maker</h1>
+          <div className="space-y-4">
+            {games.map((game, index) => (
+              <div
+                key={index}
+                className="mt-4 p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex flex-col items-start space-y-2"
+              >
+                <p className="font-semibold">{game.name}</p>
+                <p>{`作成者: ${game.createdBy}`}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </main>
     </div>
