@@ -9,8 +9,9 @@ export default function Home() {
       </Head>
       <main>
         <h1>Cookie Clicker Maker</h1>
-        <p>start!!!</p>
-        <p>test</p>
+        <button className="bg-indigo-700 font-semibold text-white py-2 px-4 rounded">
+          Start
+        </button>
       </main>
     </div>
   )
