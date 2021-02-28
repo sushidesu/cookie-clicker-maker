@@ -1,5 +1,6 @@
 import Head from "next/head"
 import { Game } from "domain/entity"
+import { Layout } from "components/Layout"
 import { GameCreateForm } from "components/GameCreateForm"
 
 export type Props = {
@@ -9,7 +10,7 @@ export type Props = {
 
 export function HomePageTemplate({ games }: Props) {
   return (
-    <div>
+    <Layout>
       <Head>
         <title>Cookie Clicker Maker</title>
         <link rel="icon" href="/favicon.ico" />
@@ -31,6 +32,6 @@ export function HomePageTemplate({ games }: Props) {
         </div>
         <GameCreateForm onSubmit={(event) => event.preventDefault()} />
       </main>
-    </div>
+    </Layout>
   )
 }
