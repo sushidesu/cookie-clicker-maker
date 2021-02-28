@@ -34,7 +34,7 @@ export default function Home({
             {games.map((game, index) => (
               <div
                 key={index}
-                className="mt-4 p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex flex-col items-start space-y-2"
+                className="flex flex-col items-start mt-4 mx-auto p-6 max-w-sm bg-white rounded-xl shadow-md space-y-2"
               >
                 <p className="font-semibold">{game.name}</p>
                 <p>{`作成者: ${game.createdBy}`}</p>
