@@ -1,6 +1,26 @@
+import { GetStaticProps, InferGetStaticPropsType } from "next"
 import Head from "next/head"
+import { rdb } from "plugins/firebaseApp"
+import { Game } from "domain/entity"
 
-export default function Home() {
+type Props = {
+  games: Game[]
+}
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const gameSnapshot = await rdb.ref("/game").once("value")
+  const games = Object.values(gameSnapshot.val()) as Game[]
+
+  return {
+    props: {
+      games,
+    },
+  }
+}
+
+export default function Home({
+  games,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div>
       <Head>
@@ -12,6 +32,11 @@ export default function Home() {
         <button className="bg-indigo-700 font-semibold text-white py-2 px-4 rounded">
           Start
         </button>
+        <div>
+          {games.map((game, index) => (
+            <p key={index}>{game.name}</p>
+          ))}
+        </div>
       </main>
     </div>
   )
