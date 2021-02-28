@@ -1,19 +1,25 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next"
 import Head from "next/head"
-import { rdb } from "plugins/firebaseApp"
+import { database } from "plugins/firebaseApp"
 import { Game } from "domain/entity"
+import { GameRepository } from "infrastructure/gameRepository"
 
 type Props = {
   games: Game[]
+  numberOfGames: number
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const gameSnapshot = await rdb.ref("/game").once("value")
-  const games = Object.values(gameSnapshot.val()) as Game[]
+  const gameRepository = new GameRepository(database)
+  const initialPageGames = await gameRepository.getGames({
+    index: 0,
+    limit: 10,
+  })
 
   return {
     props: {
-      games,
+      games: initialPageGames.games,
+      numberOfGames: initialPageGames.numberOfGames,
     },
   }
 }

@@ -16,4 +16,4 @@ if (firebase.apps.length === 0) {
   firebase.initializeApp(config)
 }
 
-export const rdb = firebase.database()
+export const database = firebase.database()
