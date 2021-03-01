@@ -42,7 +42,11 @@ export function EmojiPicker({ onIconSelect }: Props) {
 
   return (
     <div>
-      <button onClick={toggleShowPicker} className="bg-transparent">
+      <button
+        type="button"
+        onClick={toggleShowPicker}
+        className="bg-transparent"
+      >
         <Emoji set="twitter" emoji={selectedEmoji.colons} size={48} />
       </button>
       <Popover show={showPicker}>
