@@ -12,6 +12,10 @@ const config = {
   measurementId: process.env.NEXT_PUBLIC_MEASUREMENTID,
 }
 
+if (!config.apiKey) {
+  throw Error("set Firebase config on .env file")
+}
+
 if (firebase.apps.length === 0) {
   firebase.initializeApp(config)
 }
