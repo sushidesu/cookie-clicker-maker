@@ -1,3 +1,5 @@
+import { EmojiPicker } from "components/EmojiPicker"
+
 export type Props = {
   onSubmit: JSX.IntrinsicElements["form"]["onSubmit"]
   onNameBlur: JSX.IntrinsicElements["input"]["onBlur"]
@@ -20,11 +22,7 @@ export function GameCreateForm({
           <label className="text-grey-darkest text-lg font-bold">
             アイコン
           </label>
-          <input
-            className="text-grey-darkest px-3 py-2 border rounded"
-            type="text"
-            onBlur={onIconBlur}
-          />
+          <EmojiPicker />
         </div>
         <div className="flex flex-col">
           <label className="text-grey-darkest text-lg font-bold">
