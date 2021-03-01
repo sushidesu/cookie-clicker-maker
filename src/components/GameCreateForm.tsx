@@ -1,17 +1,17 @@
-import { EmojiPicker } from "components/EmojiPicker"
+import { EmojiPicker, Props as PickerProps } from "components/EmojiPicker"
 
 export type Props = {
   onSubmit: JSX.IntrinsicElements["form"]["onSubmit"]
   onNameBlur: JSX.IntrinsicElements["input"]["onBlur"]
   onCreatedByBlur: JSX.IntrinsicElements["input"]["onBlur"]
-  onIconBlur: JSX.IntrinsicElements["input"]["onBlur"]
+  onIconSelect: PickerProps["onIconSelect"]
   onBackgroundColorBlur: JSX.IntrinsicElements["input"]["onBlur"]
 }
 export function GameCreateForm({
   onSubmit,
   onNameBlur,
   onCreatedByBlur,
-  onIconBlur,
+  onIconSelect,
   onBackgroundColorBlur,
 }: Props) {
   return (
@@ -22,7 +22,7 @@ export function GameCreateForm({
           <label className="text-grey-darkest text-lg font-bold">
             アイコン
           </label>
-          <EmojiPicker />
+          <EmojiPicker onIconSelect={onIconSelect} />
         </div>
         <div className="flex flex-col">
           <label className="text-grey-darkest text-lg font-bold">

@@ -38,6 +38,12 @@ export function HomePageContainer({ games }: Props) {
     }))
     event.target.value
   }
+  const handleIconSelect = (icon: string) => {
+    setFormValue((prev) => ({
+      ...prev,
+      icon: icon,
+    }))
+  }
 
   return (
     <Layout>
@@ -64,7 +70,7 @@ export function HomePageContainer({ games }: Props) {
           onSubmit={handleSubmit}
           onNameBlur={makeHandleBlur("name")}
           onCreatedByBlur={makeHandleBlur("createdBy")}
-          onIconBlur={makeHandleBlur("icon")}
+          onIconSelect={handleIconSelect}
           onBackgroundColorBlur={makeHandleBlur("backgroundColor")}
         />
       </main>

@@ -1,41 +1,58 @@
 import { ReactNode, useState } from "react"
-import { Emoji, Picker, EmojiData } from "emoji-mart"
+import { Emoji, EmojiData, NimblePicker, Data, BaseEmoji } from "emoji-mart"
+import data from "emoji-mart/data/twitter.json"
+import { Popover } from "components/Popover"
 
-export function EmojiPicker() {
-  const COOKIE: EmojiData = {
+export type Props = {
+  onIconSelect: (icon: string) => void
+}
+
+type MaybeBaseEmoji = Partial<BaseEmoji>
+
+export function EmojiPicker({ onIconSelect }: Props) {
+  const DATA = (data as unknown) as Data
+  // TODO: defualtは親からの値でセットしたい
+  const COOKIE: BaseEmoji = {
     colons: ":cookie:",
     emoticons: [],
     id: "cookie",
     name: "Cookie",
     native: "🍪",
-    short_names: ["cookie"],
     skin: null,
     unified: "1f36a",
   }
   const [showPicker, setShowPicker] = useState(false)
-  const [emoji, setEmoji] = useState<EmojiData>(COOKIE)
+  const [selectedEmoji, setSelectedEmoji] = useState<BaseEmoji>(COOKIE)
   const toggleShowPicker = () => {
     setShowPicker((prev) => !prev)
   }
 
-  const PopOver = ({ children }: { children: ReactNode }) =>
-    showPicker ? <div>{children}</div> : null
+  const handleSelect: (emoji: EmojiData) => void = (emoji) => {
+    const maybeBaseEmoji = emoji as MaybeBaseEmoji
+    const selectedBaseEmoji: BaseEmoji | null = maybeBaseEmoji.native
+      ? (maybeBaseEmoji as BaseEmoji)
+      : null
+
+    if (selectedBaseEmoji) {
+      setSelectedEmoji(selectedBaseEmoji)
+      onIconSelect(selectedBaseEmoji.colons)
+      toggleShowPicker()
+    }
+  }
 
   return (
     <div>
       <button onClick={toggleShowPicker} className="bg-transparent">
-        <Emoji set="twitter" emoji={emoji} size={48} />
+        <Emoji set="twitter" emoji={selectedEmoji.colons} size={48} />
       </button>
-      <PopOver>
-        <Picker
+      <Popover show={showPicker}>
+        <NimblePicker
           sheetSize={32}
           set="twitter"
-          onSelect={(emoji) => {
-            setEmoji(emoji)
-            toggleShowPicker()
-          }}
+          onSelect={handleSelect}
+          data={DATA}
         />
-      </PopOver>
+      </Popover>
     </div>
   )
 }
