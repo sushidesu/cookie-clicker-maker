@@ -9,7 +9,10 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      boxShadow: ["active"],
+      translate: ["active"]
+    },
   },
   plugins: [],
 }
