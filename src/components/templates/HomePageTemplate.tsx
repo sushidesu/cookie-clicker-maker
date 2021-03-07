@@ -10,6 +10,7 @@ import {
 
 export type Props = {
   games: Game[]
+  numberOfGames: number
   handleSubmit: GameCreateFormProps["onSubmit"]
   handleNameBlur: GameCreateFormProps["onNameBlur"]
   handleCreatedByBlur: GameCreateFormProps["onCreatedByBlur"]
@@ -19,6 +20,7 @@ export type Props = {
 
 export function HomePageTemplate({
   games,
+  numberOfGames,
   handleSubmit,
   handleNameBlur,
   handleCreatedByBlur,
@@ -35,6 +37,7 @@ export function HomePageTemplate({
         <Container>
           <div className="flex flex-col items-center justify-center m-8">
             <h1 className="text-3xl font-bold">Cookie Clicker Maker</h1>
+            <p>{`投稿されたゲームの総数: ${numberOfGames}`}</p>
             <div className="space-y-4">
               {games.map((game, index) => (
                 <GameCard key={index} game={game} />

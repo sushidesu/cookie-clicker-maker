@@ -14,7 +14,7 @@ export type Props = {
 
 type FormValue = Pick<Game, "name" | "createdBy" | "icon" | "backgroundColor">
 
-export function HomePageContainer({ games }: Props) {
+export function HomePageContainer({ games, numberOfGames }: Props) {
   const gameRepository = new GameRepository(database)
   const [formValue, setFormValue] = useState<FormValue>({
     name: "",
@@ -48,6 +48,7 @@ export function HomePageContainer({ games }: Props) {
 
   const props: TemplateProps = {
     games,
+    numberOfGames,
     handleSubmit,
     handleNameBlur: makeHandleBlur("name"),
     handleCreatedByBlur: makeHandleBlur("createdBy"),
