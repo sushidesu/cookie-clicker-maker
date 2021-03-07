@@ -1,4 +1,4 @@
-import firebase from "firebase"
+import firebase from "firebase/app"
 import { Game, PrimaryGame } from "domain/entity"
 import {
   IGameRepository,

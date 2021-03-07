@@ -1,4 +1,4 @@
-import firebase from "firebase"
+import firebase from "firebase/app"
 import { ApplicationValue } from "domain/entity"
 import { IApplicationValueRepository, Listener } from "domain/repository"
 
