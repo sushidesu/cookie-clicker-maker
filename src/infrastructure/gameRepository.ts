@@ -48,7 +48,7 @@ export class GameRepository implements IGameRepository {
       ? this.gamesReference
           .orderByKey()
           .endBefore(startAfterKey)
-          .limitToFirst(limit)
+          .limitToLast(limit)
       : this.gamesReference.orderByKey().limitToLast(limit)
 
     const gameSnapshot = await query.once("value")
