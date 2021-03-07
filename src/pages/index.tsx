@@ -20,6 +20,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     props: {
       games,
     },
+    revalidate: 1,
   }
 }
 
