@@ -10,7 +10,7 @@ export const useCreateForm = (gameRepository: IGameRepository): Props => {
   const [formValue, setFormValue] = useState<FormValue>({
     name: "",
     createdBy: "",
-    icon: "",
+    icon: ":cookie:",
     backgroundColor: "#000000",
   })
 
