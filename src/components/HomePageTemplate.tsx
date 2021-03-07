@@ -2,15 +2,18 @@ import Head from "next/head"
 import { Game } from "domain/entity"
 import { Layout } from "components/Layout"
 import { GameCard } from "components/GameCard"
-import { GameCreateForm } from "components/GameCreateForm"
+import {
+  GameCreateForm,
+  Props as GameCreateFormProps,
+} from "components/GameCreateForm"
 
 export type Props = {
   games: Game[]
-  handleSubmit: JSX.IntrinsicElements["form"]["onSubmit"]
-  handleNameBlur: JSX.IntrinsicElements["input"]["onBlur"]
-  handleCreatedByBlur: JSX.IntrinsicElements["input"]["onBlur"]
-  handleIconSelect: (icon: string) => void
-  handleBackgroundColorBlur: JSX.IntrinsicElements["input"]["onBlur"]
+  handleSubmit: GameCreateFormProps["onSubmit"]
+  handleNameBlur: GameCreateFormProps["onNameBlur"]
+  handleCreatedByBlur: GameCreateFormProps["onCreatedByBlur"]
+  handleIconSelect: GameCreateFormProps["onIconSelect"]
+  handleBackgroundColorBlur: GameCreateFormProps["onBackgroundColorBlur"]
 }
 
 export function HomePageTemplate({
