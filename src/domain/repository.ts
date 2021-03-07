@@ -3,20 +3,18 @@ import { ApplicationValue, Game } from "domain/entity"
 export interface IGameRepository {
   addGame: (game: Omit<Game, "id">) => void
   removeGame: (gameId: string) => void
-  getGames: (props: GetGamesProps) => Promise<PaginatedGames>
+  getGames: (props: GetGamesProps) => Promise<Game[]>
   getGame: (gameId: string) => Promise<Game | undefined>
 }
 
 export type GetGamesProps = {
-  index: number
   limit: number
+  startAfterKey?: string
 }
 
-export type PaginatedGames = {
+export interface PaginatedGames {
   games: Game[]
-  nextIndex: PaginationIndex
-  prevIndex: PaginationIndex
-  numberOfGames: number
+  loadMore: () => Game[]
 }
 
 type PaginationIndex = number | null | undefined

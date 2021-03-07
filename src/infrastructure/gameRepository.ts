@@ -2,7 +2,6 @@ import firebase from "firebase/app"
 import { Game, PrimaryGame } from "domain/entity"
 import {
   IGameRepository,
-  PaginatedGames,
   GetGamesProps,
   IApplicationValueRepository,
 } from "domain/repository"
@@ -44,16 +43,16 @@ export class GameRepository implements IGameRepository {
     }
   }
 
-  async getGames({ index, limit }: GetGamesProps) {
-    const gameSnapshot = await this.gamesReference.once("value")
-    const games = Object.values(gameSnapshot.val()) as Game[]
-    const result: PaginatedGames = {
-      nextIndex: null,
-      prevIndex: null,
-      numberOfGames: 0,
-      games,
-    }
+  async getGames({ limit, startAfterKey }: GetGamesProps) {
+    const query = startAfterKey
+      ? this.gamesReference
+          .orderByKey()
+          .startAfter(startAfterKey)
+          .limitToFirst(limit)
+      : this.gamesReference.orderByKey().limitToFirst(limit)
 
-    return result
+    const gameSnapshot = await query.once("value")
+    const games = Object.values(gameSnapshot.val()) as Game[]
+    return games
   }
 }
