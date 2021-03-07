@@ -4,6 +4,7 @@ import {
   HomePageTemplate,
   Props as TemplateProps,
 } from "components/templates/HomePageTemplate"
+import { ApplicationValueRepository } from "infrastructure/applicationValueRepository"
 import { GameRepository } from "infrastructure/gameRepository"
 import { database } from "plugins/firebaseApp"
 
@@ -15,7 +16,8 @@ export type Props = {
 type FormValue = Pick<Game, "name" | "createdBy" | "icon" | "backgroundColor">
 
 export function HomePageContainer({ games, numberOfGames }: Props) {
-  const gameRepository = new GameRepository(database)
+  const appValRepository = new ApplicationValueRepository(database)
+  const gameRepository = new GameRepository(database, appValRepository)
   const [formValue, setFormValue] = useState<FormValue>({
     name: "",
     createdBy: "",

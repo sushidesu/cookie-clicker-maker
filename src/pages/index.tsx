@@ -11,8 +11,8 @@ type Props = {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const gameRepository = new GameRepository(database)
   const appValueRepository = new ApplicationValueRepository(database)
+  const gameRepository = new GameRepository(database, appValueRepository)
   const initialPageGames = await gameRepository.getGames({
     index: 0,
     limit: 10,
