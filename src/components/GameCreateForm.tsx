@@ -24,6 +24,7 @@ export function GameCreateForm({
         <label className="text-grey-darkest text-lg font-bold">ゲーム名</label>
         <input
           className="text-grey-darkest px-3 py-2 border rounded"
+          maxLength={20}
           type="text"
           onBlur={onNameBlur}
         />
@@ -32,6 +33,7 @@ export function GameCreateForm({
         <label className="text-grey-darkest text-lg font-bold">作成者</label>
         <input
           className="text-grey-darkest px-3 py-2 border rounded"
+          maxLength={20}
           type="text"
           onBlur={onCreatedByBlur}
         />

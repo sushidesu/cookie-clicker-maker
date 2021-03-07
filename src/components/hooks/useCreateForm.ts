@@ -19,6 +19,13 @@ export const useCreateForm = (gameRepository: IGameRepository): Props => {
     const newGame: PrimaryGame = {
       ...formValue,
     }
+    if (Object.values(formValue).some((value) => value.length === 0)) {
+      window.alert("ゲーム名・作成者名は必ず入力してください。")
+      return
+    } else if (Object.values(formValue).some((value) => value.length > 20)) {
+      window.alert("20文字以内でお願いします。")
+      return
+    }
     const result = gameRepository.addGame(newGame)
     Router.push(`/game/${result.id}`)
   }
