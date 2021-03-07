@@ -28,6 +28,17 @@ export class GameRepository implements IGameRepository {
     // todo
   }
 
+  async getGame(gameId: string): Promise<Game | undefined> {
+    const gameSnapshot = await this.databaseReference
+      .child(gameId)
+      .once("value")
+    if (gameSnapshot.exists()) {
+      return gameSnapshot.val() as Game
+    } else {
+      return undefined
+    }
+  }
+
   async getGames({ index, limit }: GetGamesProps) {
     const gameSnapshot = await this.databaseReference.once("value")
     const games = Object.values(gameSnapshot.val()) as Game[]

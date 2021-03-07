@@ -4,6 +4,7 @@ export interface IGameRepository {
   addGame: (game: Omit<Game, "id">) => void
   removeGame: (gameId: string) => void
   getGames: (props: GetGamesProps) => Promise<PaginatedGames>
+  getGame: (gameId: string) => Promise<Game | undefined>
 }
 
 export type GetGamesProps = {
