@@ -43,10 +43,10 @@ export function GameCreateForm({
         <input type="color" onBlur={onBackgroundColorBlur} />
       </div>
       <button
-        className="block mx-auto px-4 py-2 text-white text-lg font-bold tracking-widest bg-teal-500 hover:bg-teal-600 rounded shadow-md"
+        className="block mx-auto px-4 py-2 text-white text-lg font-bold bg-teal-500 hover:bg-teal-600 rounded shadow-md"
         type="submit"
       >
-        ゲームを登録
+        ゲームを投稿
       </button>
     </form>
   )

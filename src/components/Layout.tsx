@@ -25,7 +25,7 @@ export function Layout({ children, ...rest }: Props) {
           <button className="absolute right-2 top-2 p-2" onClick={toggleModal}>
             閉じる
           </button>
-          <h1 className="mb-4 text-xl font-bold">ゲームを作成</h1>
+          <h1 className="mb-4 text-xl font-bold">ゲームを投稿する</h1>
           <GameCreateForm {...rest} />
         </div>
       </Modal>
