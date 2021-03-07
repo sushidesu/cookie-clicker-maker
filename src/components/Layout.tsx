@@ -1,7 +1,14 @@
+import { Header } from "components/Header"
+
 type Props = {
   children: React.ReactNode
 }
 
 export function Layout({ children }: Props) {
-  return <div className="mx-auto p-4 max-w-2xl overflow-hidden">{children}</div>
+  return (
+    <div className="overflow-hidden">
+      <Header />
+      <div className="pb-8">{children}</div>
+    </div>
+  )
 }
