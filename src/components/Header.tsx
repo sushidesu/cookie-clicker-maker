@@ -19,7 +19,7 @@ export function Header({ onPostClick }: Props) {
           </div>
           <div>
             <button
-              className="px-4 py-1 font-bold bg-white rounded shadow"
+              className="px-4 py-1 font-bold bg-white rounded focus:outline-none shadow"
               onClick={onPostClick}
             >
               投稿

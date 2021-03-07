@@ -25,10 +25,16 @@ export function HomePageTemplate({
       </Head>
       <main>
         <Container>
-          <div className="flex flex-col items-center justify-center m-8">
-            <h1 className="text-3xl font-bold">Cookie Clicker Maker</h1>
-            <p>{`投稿されたゲームの総数: ${numberOfGames}`}</p>
-            <div className="space-y-4">
+          <div className="flex flex-col items-center justify-center mt-8">
+            <h1 className="text-center text-3xl font-bold">
+              <span className="inline-block">クッキークリッカー</span>
+              <span className="inline-block">メーカー</span>
+            </h1>
+            <p className="mt-6 text-2xl">
+              {`投稿されたゲームの総数: `}
+              <span className="text-4xl">{numberOfGames}</span>
+            </p>
+            <div className="mt-4 space-y-4">
               {games.map((game, index) => (
                 <GameCard key={index} game={game} />
               ))}

@@ -20,7 +20,6 @@ export class GameRepository implements IGameRepository {
   }
 
   addGame(game: PrimaryGame) {
-    console.log(game)
     const key = this.gamesReference.push().key as string
     const newGame: Game = {
       ...game,
