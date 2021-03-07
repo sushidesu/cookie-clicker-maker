@@ -1,8 +1,10 @@
-import { Layout } from "components/Layout"
+import { Layout, Props as LayoutProps } from "components/Layout"
 
-export function GameNotFoundTemplate() {
+type Props = OmitChildren<LayoutProps>
+
+export function GameNotFoundTemplate(props: Props) {
   return (
-    <Layout>
+    <Layout {...props}>
       <main>
         <div>not found</div>
       </main>

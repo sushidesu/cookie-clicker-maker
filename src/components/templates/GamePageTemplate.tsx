@@ -1,4 +1,4 @@
-import { Layout } from "components/Layout"
+import { Layout, Props as LayoutProps } from "components/Layout"
 import { Emoji } from "emoji-mart"
 import { Game } from "domain/entity"
 
@@ -6,11 +6,16 @@ export type Props = {
   game: Game
   cookies: number
   onCookieClick: () => void
-}
+} & OmitChildren<LayoutProps>
 
-export function GamePageTemplate({ game, cookies, onCookieClick }: Props) {
+export function GamePageTemplate({
+  game,
+  cookies,
+  onCookieClick,
+  ...rest
+}: Props) {
   return (
-    <Layout>
+    <Layout {...rest}>
       <main>
         <div className="mt-24">
           <div className="ronded-xl flex flex-col items-center mt-4 mx-auto p-6 max-w-sm bg-white shadow-md space-y-2">

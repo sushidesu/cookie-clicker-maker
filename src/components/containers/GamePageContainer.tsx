@@ -4,6 +4,7 @@ import { Game } from "domain/entity"
 import { database } from "plugins/firebaseApp"
 import { GameRepository } from "infrastructure/gameRepository"
 import { ApplicationValueRepository } from "infrastructure/applicationValueRepository"
+import { useCreateForm } from "../hooks/useCreateForm"
 import {
   GamePageTemplate,
   Props as TemplateProps,
@@ -17,6 +18,8 @@ export function GamePageContainer() {
   const { gid } = router.query
   const appValueRepository = new ApplicationValueRepository(database)
   const gameRepository = new GameRepository(database, appValueRepository)
+
+  const formProps = useCreateForm(gameRepository)
 
   const bakeCookie = useCallback(() => {
     setCookies((prev) => prev + 1)
@@ -42,9 +45,10 @@ export function GamePageContainer() {
       game,
       onCookieClick: bakeCookie,
       cookies,
+      ...formProps,
     }
     return <GamePageTemplate {...props} />
   } else {
-    return <GameNotFoundTemplate />
+    return <GameNotFoundTemplate {...formProps} />
   }
 }

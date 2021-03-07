@@ -3,32 +3,16 @@ import { Game } from "domain/entity"
 import { Layout } from "components/Layout"
 import { Container } from "components/Container"
 import { GameCard } from "components/GameCard"
-import {
-  GameCreateForm,
-  Props as GameCreateFormProps,
-} from "components/GameCreateForm"
+import { Props as GameCreateFormProps } from "components/GameCreateForm"
 
 export type Props = {
   games: Game[]
   numberOfGames: number
-  handleSubmit: GameCreateFormProps["onSubmit"]
-  handleNameBlur: GameCreateFormProps["onNameBlur"]
-  handleCreatedByBlur: GameCreateFormProps["onCreatedByBlur"]
-  handleIconSelect: GameCreateFormProps["onIconSelect"]
-  handleBackgroundColorBlur: GameCreateFormProps["onBackgroundColorBlur"]
-}
+} & GameCreateFormProps
 
-export function HomePageTemplate({
-  games,
-  numberOfGames,
-  handleSubmit,
-  handleNameBlur,
-  handleCreatedByBlur,
-  handleIconSelect,
-  handleBackgroundColorBlur,
-}: Props) {
+export function HomePageTemplate({ games, numberOfGames, ...rest }: Props) {
   return (
-    <Layout>
+    <Layout {...rest}>
       <Head>
         <title>Cookie Clicker Maker</title>
         <link rel="icon" href="/favicon.ico" />
@@ -44,13 +28,6 @@ export function HomePageTemplate({
               ))}
             </div>
           </div>
-          <GameCreateForm
-            onSubmit={handleSubmit}
-            onNameBlur={handleNameBlur}
-            onCreatedByBlur={handleCreatedByBlur}
-            onIconSelect={handleIconSelect}
-            onBackgroundColorBlur={handleBackgroundColorBlur}
-          />
         </Container>
       </main>
     </Layout>
