@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Router from "next/router"
 import { Game, PrimaryGame } from "domain/entity"
 import { IGameRepository } from "domain/repository"
 import { Props } from "components/GameCreateForm"
@@ -12,12 +13,14 @@ export const useCreateForm = (gameRepository: IGameRepository): Props => {
     icon: "",
     backgroundColor: "#000000",
   })
+
   const handleSubmit: Props["onSubmit"] = (event) => {
     event.preventDefault()
     const newGame: PrimaryGame = {
       ...formValue,
     }
-    gameRepository.addGame(newGame)
+    const result = gameRepository.addGame(newGame)
+    Router.push(`/game/${result.id}`)
   }
   const makeHandleBlur: (name: keyof FormValue) => Props["onNameBlur"] = (
     name,

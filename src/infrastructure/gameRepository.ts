@@ -28,6 +28,7 @@ export class GameRepository implements IGameRepository {
     }
     this.gamesReference.child(key).set(newGame)
     this.appValueRepository.incrementNumberOfGames()
+    return newGame
   }
 
   removeGame() {

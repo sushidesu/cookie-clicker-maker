@@ -1,7 +1,7 @@
 import { ApplicationValue, Game } from "domain/entity"
 
 export interface IGameRepository {
-  addGame: (game: Omit<Game, "id">) => void
+  addGame: (game: Omit<Game, "id">) => Game
   removeGame: (gameId: string) => void
   getGames: (props: GetGamesProps) => Promise<Game[]>
   getGame: (gameId: string) => Promise<Game | undefined>
