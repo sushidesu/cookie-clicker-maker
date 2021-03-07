@@ -7,15 +7,15 @@ import {
 import { ApplicationValueRepository } from "infrastructure/applicationValueRepository"
 import { GameRepository } from "infrastructure/gameRepository"
 import { database } from "plugins/firebaseApp"
+import { useRealtimeListener } from "../hooks/useRealtimeListener"
 
 export type Props = {
   games: Game[]
-  numberOfGames: number
 }
 
 type FormValue = Pick<Game, "name" | "createdBy" | "icon" | "backgroundColor">
 
-export function HomePageContainer({ games, numberOfGames }: Props) {
+export function HomePageContainer({ games }: Props) {
   const appValRepository = new ApplicationValueRepository(database)
   const gameRepository = new GameRepository(database, appValRepository)
   const [formValue, setFormValue] = useState<FormValue>({
@@ -24,6 +24,9 @@ export function HomePageContainer({ games, numberOfGames }: Props) {
     icon: "",
     backgroundColor: "#000000",
   })
+
+  const appValues = useRealtimeListener(appValRepository)
+  const numberOfGames = appValues ? appValues.numberOfGames : 0
 
   const handleSubmit: TemplateProps["handleSubmit"] = (event) => {
     event.preventDefault()

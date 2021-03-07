@@ -7,7 +7,6 @@ import { HomePageContainer } from "components/containers/HomePageContainer"
 
 type Props = {
   games: Game[]
-  numberOfGames: number
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
@@ -17,19 +16,16 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     index: 0,
     limit: 10,
   })
-  const appValue = await appValueRepository.getApplicationValue()
 
   return {
     props: {
       games: initialPageGames.games,
-      numberOfGames: appValue.numberOfGames,
     },
   }
 }
 
 export default function Home({
   games,
-  numberOfGames,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return <HomePageContainer games={games} numberOfGames={numberOfGames} />
+  return <HomePageContainer games={games} />
 }

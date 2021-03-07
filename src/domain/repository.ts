@@ -23,7 +23,17 @@ type PaginationIndex = number | null | undefined
 
 /* --- */
 
-export interface IApplicationValueRepository {
+export interface IApplicationValueRepository
+  extends RealtimeListnable<ApplicationValue> {
   getApplicationValue: () => Promise<ApplicationValue>
   incrementNumberOfGames: () => void
 }
+
+/* --- */
+
+export interface RealtimeListnable<T> {
+  subscribe: (listener: Listener<T>) => void
+  unSubscribe: () => void
+}
+
+export type Listener<T> = (newValue: T) => void
