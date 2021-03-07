@@ -1,7 +1,9 @@
+import Head from "next/head"
 import Link from "next/link"
 import { Layout, Props as LayoutProps } from "components/Layout"
 import { Emoji } from "emoji-mart"
 import { Game } from "domain/entity"
+import { Meta } from "components/Meta"
 
 export type Props = {
   game: Game
@@ -17,6 +19,11 @@ export function GamePageTemplate({
 }: Props) {
   return (
     <Layout {...rest}>
+      <Head>
+        <title>Cookie Clicker Maker</title>
+        <link rel="icon" href="/favicon.ico" />
+        <Meta />
+      </Head>
       <main>
         <div className="mt-24 mx-4">
           <div className="ronded-xl flex flex-col items-center mt-4 mx-auto p-6 max-w-sm bg-white shadow-md space-y-4">

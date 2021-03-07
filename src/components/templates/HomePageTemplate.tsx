@@ -4,6 +4,7 @@ import { Layout } from "components/Layout"
 import { Container } from "components/Container"
 import { GameCard } from "components/GameCard"
 import { Props as GameCreateFormProps } from "components/GameCreateForm"
+import { Meta } from "components/Meta"
 
 export type Props = {
   games: Game[]
@@ -22,6 +23,7 @@ export function HomePageTemplate({
       <Head>
         <title>Cookie Clicker Maker</title>
         <link rel="icon" href="/favicon.ico" />
+        <Meta />
       </Head>
       <main>
         <Container>
