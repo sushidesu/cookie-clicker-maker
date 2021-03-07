@@ -3,7 +3,7 @@ import { Game, PrimaryGame } from "domain/entity"
 import {
   HomePageTemplate,
   Props as TemplateProps,
-} from "components/HomePageTemplate"
+} from "components/templates/HomePageTemplate"
 import { GameRepository } from "infrastructure/gameRepository"
 import { database } from "plugins/firebaseApp"
 

@@ -2,7 +2,7 @@ import { GetStaticProps, InferGetStaticPropsType } from "next"
 import { database } from "plugins/firebaseApp"
 import { Game } from "domain/entity"
 import { GameRepository } from "infrastructure/gameRepository"
-import { HomePageContainer } from "components/HomePageContainer"
+import { HomePageContainer } from "components/containers/HomePageContainer"
 
 type Props = {
   games: Game[]
