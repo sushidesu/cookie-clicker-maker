@@ -13,3 +13,9 @@ export interface Background {
   primaryColor: string
   secondaryColor: string
 }
+
+/* --- */
+
+export interface ApplicationValue {
+  numberOfGames: number
+}

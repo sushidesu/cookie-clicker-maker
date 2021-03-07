@@ -1,4 +1,4 @@
-import { Game } from "domain/entity"
+import { ApplicationValue, Game } from "domain/entity"
 
 export interface IGameRepository {
   addGame: (game: Omit<Game, "id">) => void
@@ -20,3 +20,10 @@ export type PaginatedGames = {
 }
 
 type PaginationIndex = number | null | undefined
+
+/* --- */
+
+export interface IApplicationValueRepository {
+  getApplicationValue: () => Promise<ApplicationValue>
+  incrementNumberOfGames: () => void
+}
