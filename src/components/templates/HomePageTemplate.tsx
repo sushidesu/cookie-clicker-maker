@@ -8,9 +8,15 @@ import { Props as GameCreateFormProps } from "components/GameCreateForm"
 export type Props = {
   games: Game[]
   numberOfGames: number
+  onLoadMore: () => void
 } & GameCreateFormProps
 
-export function HomePageTemplate({ games, numberOfGames, ...rest }: Props) {
+export function HomePageTemplate({
+  games,
+  numberOfGames,
+  onLoadMore,
+  ...rest
+}: Props) {
   return (
     <Layout {...rest}>
       <Head>
@@ -27,6 +33,12 @@ export function HomePageTemplate({ games, numberOfGames, ...rest }: Props) {
                 <GameCard key={index} game={game} />
               ))}
             </div>
+            <button
+              className="mt-10 px-4 py-2 font-bold bg-white rounded focus:outline-none shadow-md"
+              onClick={onLoadMore}
+            >
+              もっと見る
+            </button>
           </div>
         </Container>
       </main>

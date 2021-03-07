@@ -47,12 +47,12 @@ export class GameRepository implements IGameRepository {
     const query = startAfterKey
       ? this.gamesReference
           .orderByKey()
-          .startAfter(startAfterKey)
+          .endBefore(startAfterKey)
           .limitToFirst(limit)
-      : this.gamesReference.orderByKey().limitToFirst(limit)
+      : this.gamesReference.orderByKey().limitToLast(limit)
 
     const gameSnapshot = await query.once("value")
-    const games = Object.values(gameSnapshot.val()) as Game[]
-    return games
+    const games = Object.values(gameSnapshot.val() ?? {}) as Game[]
+    return games.reverse()
   }
 }
