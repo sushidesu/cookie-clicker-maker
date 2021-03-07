@@ -17,7 +17,7 @@ export function GamePageTemplate({
   return (
     <Layout {...rest}>
       <main>
-        <div className="mt-24">
+        <div className="mt-24 mx-4">
           <div className="ronded-xl flex flex-col items-center mt-4 mx-auto p-6 max-w-sm bg-white shadow-md space-y-2">
             <p className="font-semibold">{game.name}</p>
             <Emoji
