@@ -4,7 +4,7 @@ import { Game } from "domain/entity"
 import { database } from "plugins/firebaseApp"
 import { GameRepository } from "infrastructure/gameRepository"
 import { ApplicationValueRepository } from "infrastructure/applicationValueRepository"
-import { useCreateForm } from "../hooks/useCreateForm"
+import { useCreateForm } from "hooks/useCreateForm"
 import {
   GamePageTemplate,
   Props as TemplateProps,

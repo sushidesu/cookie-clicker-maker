@@ -6,9 +6,9 @@ import {
 import { ApplicationValueRepository } from "infrastructure/applicationValueRepository"
 import { GameRepository } from "infrastructure/gameRepository"
 import { database } from "plugins/firebaseApp"
-import { useRealtimeListener } from "../hooks/useRealtimeListener"
-import { useCreateForm } from "../hooks/useCreateForm"
-import { usePaginatedGames } from "../hooks/usePaginatedGames"
+import { useRealtimeListener } from "hooks/useRealtimeListener"
+import { useCreateForm } from "hooks/useCreateForm"
+import { usePaginatedGames } from "hooks/usePaginatedGames"
 
 export type Props = {
   initGames: Game[]
