@@ -17,8 +17,6 @@ export interface PaginatedGames {
   loadMore: () => Game[]
 }
 
-type PaginationIndex = number | null | undefined
-
 /* --- */
 
 export interface IApplicationValueRepository

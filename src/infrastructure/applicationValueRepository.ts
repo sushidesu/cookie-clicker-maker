@@ -12,14 +12,14 @@ export class ApplicationValueRepository implements IApplicationValueRepository {
     this.applicationValueReference = databaseInstance.ref(this.COMMON_PATH)
   }
 
-  async getApplicationValue() {
+  async getApplicationValue(): Promise<ApplicationValue> {
     const appValueSnapshot = await this.applicationValueReference
       .child(this.APP_VALUE_PATH)
       .once("value")
     return appValueSnapshot.val() as ApplicationValue
   }
 
-  subscribe(listener: Listener<ApplicationValue>) {
+  subscribe(listener: Listener<ApplicationValue>): void {
     this.applicationValueReference.on("child_changed", (snapshot) => {
       listener(snapshot.val())
     })
@@ -27,11 +27,11 @@ export class ApplicationValueRepository implements IApplicationValueRepository {
       listener(snapshot.val())
     })
   }
-  unSubscribe() {
+  unSubscribe(): void {
     this.applicationValueReference.off()
   }
 
-  incrementNumberOfGames() {
+  incrementNumberOfGames(): void {
     this.applicationValueReference
       .child(this.APP_VALUE_PATH)
       .child(this.NUMBER_OF_GAMES_PATH)

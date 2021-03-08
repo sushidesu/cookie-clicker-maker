@@ -3,6 +3,6 @@ export type Props = {
   show: boolean
 }
 
-export function Popover({ children, show }: Props) {
+export function Popover({ children, show }: Props): JSX.Element {
   return <div>{show && children}</div>
 }

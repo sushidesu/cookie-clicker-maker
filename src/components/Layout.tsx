@@ -7,7 +7,7 @@ export type Props = {
   children: React.ReactNode
 } & FormProps
 
-export function Layout({ children, ...rest }: Props) {
+export function Layout({ children, ...rest }: Props): JSX.Element {
   const [show, setShow] = useState(false)
   const toggleModal = useCallback(() => {
     setShow((prev) => !prev)

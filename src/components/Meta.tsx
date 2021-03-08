@@ -1,4 +1,4 @@
-export function Meta() {
+export function Meta(): JSX.Element {
   const TITLE = "Cookie Clicker Maker"
   const DESC = "クッキークリッカーみたいなゲームをたくさん投稿しよう"
   const IMG_URL = "https://cookie.dayo.app/images/ogp.png"

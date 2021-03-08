@@ -11,7 +11,7 @@ import {
 } from "components/templates/GamePageTemplate"
 import { GameNotFoundTemplate } from "components/templates/GameNotFoundTemplate"
 
-export function GamePageContainer() {
+export function GamePageContainer(): JSX.Element {
   const [game, setGame] = useState<Game | null | undefined>(null)
   const [cookies, setCookies] = useState(0)
   const router = useRouter()

@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react"
+import { useState } from "react"
 import { Emoji, EmojiData, NimblePicker, Data, BaseEmoji } from "emoji-mart"
 import data from "emoji-mart/data/twitter.json"
 import { Popover } from "components/Popover"
@@ -9,7 +9,7 @@ export type Props = {
 
 type MaybeBaseEmoji = Partial<BaseEmoji>
 
-export function EmojiPicker({ onIconSelect }: Props) {
+export function EmojiPicker({ onIconSelect }: Props): JSX.Element {
   const DATA = (data as unknown) as Data
   // TODO: defualtは親からの値でセットしたい
   const COOKIE: BaseEmoji = {

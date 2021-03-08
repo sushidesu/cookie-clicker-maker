@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Game } from "domain/entity"
 import { IGameRepository } from "domain/repository"
 

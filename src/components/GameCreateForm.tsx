@@ -13,7 +13,7 @@ export function GameCreateForm({
   onCreatedByBlur,
   onIconSelect,
   onBackgroundColorBlur,
-}: Props) {
+}: Props): JSX.Element {
   return (
     <form onSubmit={onSubmit} className="w-full space-y-4">
       <div className="flex flex-col">

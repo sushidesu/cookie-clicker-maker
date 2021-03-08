@@ -14,7 +14,7 @@ export type Props = {
   initGames: Game[]
 }
 
-export function HomePageContainer({ initGames }: Props) {
+export function HomePageContainer({ initGames }: Props): JSX.Element {
   const appValRepository = new ApplicationValueRepository(database)
   const gameRepository = new GameRepository(database, appValRepository)
   const formProps = useCreateForm(gameRepository)

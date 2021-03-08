@@ -6,7 +6,7 @@ export type Props = {
   game: Game
 }
 
-export function GameCard({ game }: Props) {
+export function GameCard({ game }: Props): JSX.Element {
   return (
     <Link href={`/game/${game.id}`}>
       <div className="flex flex-col items-center mt-4 mx-auto p-6 max-w-sm bg-white rounded-xl shadow-md cursor-pointer space-y-2">

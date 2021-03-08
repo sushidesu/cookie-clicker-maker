@@ -5,7 +5,7 @@ import "tailwindcss/tailwind.css"
 import "emoji-mart/css/emoji-mart.css"
 import ReactModal from "react-modal"
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   ReactModal.setAppElement("#__next")
   useEffect(() => {
     firebase.auth().signInAnonymously()

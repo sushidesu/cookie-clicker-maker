@@ -19,7 +19,7 @@ export class GameRepository implements IGameRepository {
     this.appValueRepository = applicationValueRepository
   }
 
-  addGame(game: PrimaryGame) {
+  addGame(game: PrimaryGame): Game {
     const key = this.gamesReference.push().key as string
     const newGame: Game = {
       ...game,
@@ -30,7 +30,7 @@ export class GameRepository implements IGameRepository {
     return newGame
   }
 
-  removeGame() {
+  removeGame(): void {
     // todo
   }
 
@@ -43,7 +43,7 @@ export class GameRepository implements IGameRepository {
     }
   }
 
-  async getGames({ limit, startAfterKey }: GetGamesProps) {
+  async getGames({ limit, startAfterKey }: GetGamesProps): Promise<Game[]> {
     const query = startAfterKey
       ? this.gamesReference
           .orderByKey()

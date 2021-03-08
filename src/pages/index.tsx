@@ -26,6 +26,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
 export default function Home({
   games,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>): JSX.Element {
   return <HomePageContainer initGames={games} />
 }

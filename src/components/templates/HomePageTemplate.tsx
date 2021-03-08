@@ -17,7 +17,7 @@ export function HomePageTemplate({
   numberOfGames,
   onLoadMore,
   ...rest
-}: Props) {
+}: Props): JSX.Element {
   return (
     <Layout {...rest}>
       <Head>

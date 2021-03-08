@@ -5,7 +5,7 @@ export type Props = {
   onPostClick: () => void
 }
 
-export function Header({ onPostClick }: Props) {
+export function Header({ onPostClick }: Props): JSX.Element {
   return (
     <header className="p-4 bg-teal-400">
       <Container>

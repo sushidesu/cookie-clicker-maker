@@ -16,7 +16,7 @@ export function GamePageTemplate({
   cookies,
   onCookieClick,
   ...rest
-}: Props) {
+}: Props): JSX.Element {
   return (
     <Layout {...rest}>
       <Head>
